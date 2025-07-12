@@ -25,16 +25,16 @@ router.get('/', async (req, res) => {
 
     //verificar si ya existen noticias para hoy
     const { rows } = await pool.query(
-      'SELECT * FROM deportes WHERE fecha_publicacion = $1',
-      [hoyColombia]
+      'SELECT * FROM noticias WHERE fecha_publicacion = $1 AND categoria = $2',
+      [hoyColombia, CATEGORIA]
     );
 
     if (rows.length > 0) return res.json(rows);
 
     //borrar noticias anteriores
     await pool.query(
-      'DELETE FROM deportes WHERE fecha_publicacion < $1',
-      [hoyColombia]
+      'DELETE FROM noticias WHERE fecha_publicacion < $1 AND categoria = $2',
+      [hoyColombia, CATEGORIA]
     );
 
     //generar nuevas noticias con la API de Gemini
