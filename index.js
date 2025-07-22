@@ -17,6 +17,10 @@ app.use('/api/noticias/deportes', require('./routes/noticiasDeportes'));
 app.use('/api/entrevistas', require('./routes/entrevistas'));
 app.use('/api/tulio', require('./routes/tulio'));
 app.use('/api/likes', require('./routes/likes'));
+app.use('/api/reporteros-pasantes', require('./routes/reporterosPasantes'));
+app.use('/api/noticias-pasantes', require('./routes/noticiasPasantes'));
+
+
 
 
 app.listen(port, () => {
